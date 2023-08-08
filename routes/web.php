@@ -20,4 +20,8 @@ Route::get('/', function () {
 Route::prefix('customers')->group(function (){
     Route::get('/', [\App\Http\Controllers\CustomerController::class, 'index'])->name('customers.index');
     Route::get('/create', [\App\Http\Controllers\CustomerController::class, 'create'])->name('customers.create');
+    Route::post('/create', [\App\Http\Controllers\CustomerController::class, 'store'])->name('customers.store');
+    Route::get('/{id}/delete', [\App\Http\Controllers\CustomerController::class, 'delete'])->name('customers.delete');
+    Route::get('/{id}/edit', [\App\Http\Controllers\CustomerController::class, 'edit'])->name('customers.edit');
+    Route::put('/{id}/edit', [\App\Http\Controllers\CustomerController::class, 'update'])->name('customers.update');
 });
