@@ -19,6 +19,20 @@
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <input type="email" name="email" value="{{ $customer->email }}" class="form-control" aria-describedby="emailHelp">
                     </div>
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <label for="" class="col-form-label">Tỉnh thành</label>
+                        </div>
+                        <div class="col">
+                            <select class="form-control" name="city_id">
+                                @foreach($cities as $city)
+                                    <option
+                                        {{ $city->id == $customer->city_id ? 'selected' : '' }}
+                                        value="{{ $city->id }}">{{ $city->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-primary">Lưu</button>
                 </form>
             </div>

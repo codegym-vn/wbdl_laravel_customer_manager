@@ -11,6 +11,7 @@
                         <th scope="col">Tên khách hàng</th>
                         <th scope="col">Ngày sinh</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Địa chỉ</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -21,6 +22,7 @@
                             <td>{{ $customer->name }}</td>
                             <td>{{ $customer->dob }}</td>
                             <td>{{ $customer->email }}</td>
+                            <td>{{ $customer->city ? $customer->city->name : 'Không có dữ liệu' }}</td>
                             <td>
                                 <a onclick="return confirm('Are you sure?')" href="{{ route('customers.delete', $customer->id) }}" class="btn btn-danger">Delete</a>
                                 <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-primary">Update</a>
