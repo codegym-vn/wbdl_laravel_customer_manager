@@ -24,4 +24,5 @@ Route::prefix('customers')->group(function (){
     Route::get('/{id}/delete', [\App\Http\Controllers\CustomerController::class, 'delete'])->name('customers.delete');
     Route::get('/{id}/edit', [\App\Http\Controllers\CustomerController::class, 'edit'])->name('customers.edit');
     Route::put('/{id}/edit', [\App\Http\Controllers\CustomerController::class, 'update'])->name('customers.update');
+    Route::get('/search', [\App\Http\Controllers\CustomerController::class,'search'])->name('customers.search');
 });

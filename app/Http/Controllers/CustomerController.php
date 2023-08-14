@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
     function index() {
-        $customers = Customer::with('city')->get();
+        $customers = Customer::with('city')->paginate(5);
         return view('customers.list', compact('customers'));
     }
 
@@ -47,5 +47,16 @@ class CustomerController extends Controller
         $customer->city_id = $request->city_id;
         $customer->save();
         return redirect()->route('customers.index');
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->keyword;
+        if (!$keyword) {
+            return redirect()->route('customers.index');
+        }
+        $customers = Customer::where('name', 'LIKE', '%' . $keyword . '%')->with('city')->paginate(3);
+        $cities = City::all();
+        return view('customers.list', compact('customers', 'cities'));
     }
 }

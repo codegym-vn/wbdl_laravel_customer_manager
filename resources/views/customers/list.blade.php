@@ -4,6 +4,21 @@
         <div class="card">
             <h5 class="card-header">Danh sách khách hàng</h5>
             <div class="card-body">
+                <div class="col-6">
+                    <form class="navbar-form navbar-left" method="GET" action="{{ route('customers.search') }}">
+                        @csrf
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="form-group">
+                                    <input type="text" name="keyword" class="form-control" placeholder="Search">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 <table class="table">
                     <thead>
                     <tr>
@@ -31,6 +46,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                {{ $customers->appends(request()->query()) }}
             </div>
         </div>
     </div>
