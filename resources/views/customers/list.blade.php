@@ -2,16 +2,16 @@
 @section('content')
     <div class="col-12 col-md-12 mt-2">
         <div class="card">
-            <h5 class="card-header">Danh sách khách hàng</h5>
+            <h5 class="card-header">{{ __('message.list_customers') }}</h5>
             <div class="card-body">
                 <table class="table">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Tên khách hàng</th>
-                        <th scope="col">Ngày sinh</th>
+                        <th scope="col">{{ __('message.name_customer') }}</th>
+                        <th scope="col">{{ __('message.birth_day') }}</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Địa chỉ</th>
+                        <th scope="col">{{ __('message.address') }}</th>
                         <th></th>
                     </tr>
                     </thead>

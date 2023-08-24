@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,5 @@ Route::prefix('customers')->group(function (){
     Route::get('/{id}/edit', [\App\Http\Controllers\CustomerController::class, 'edit'])->name('customers.edit');
     Route::put('/{id}/edit', [\App\Http\Controllers\CustomerController::class, 'update'])->name('customers.update');
 });
+
+Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
