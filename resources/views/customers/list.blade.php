@@ -23,10 +23,12 @@
                             <td>{{ $customer->dob }}</td>
                             <td>{{ $customer->email }}</td>
                             <td>{{ $customer->city ? $customer->city->name : 'Không có dữ liệu' }}</td>
+                           @can('crud-customer')
                             <td>
                                 <a onclick="return confirm('Are you sure?')" href="{{ route('customers.delete', $customer->id) }}" class="btn btn-danger">Delete</a>
                                 <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-primary">Update</a>
                             </td>
+                            @endcan
                         </tr>
                     @endforeach
                     </tbody>

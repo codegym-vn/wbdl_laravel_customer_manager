@@ -14,11 +14,17 @@ class CustomerController extends Controller
     }
 
     function create() {
+        if (!$this->userCan('crud-customer')) {
+            abort(403);
+        }
         $cities = City::all();
         return view('customers.create', compact('cities'));
     }
 
     function store(Request $request) {
+        if (!$this->userCan('crud-customer')) {
+            abort(403);
+        }
         $customer = new Customer();
         $customer->name = $request->name;
         $customer->email = $request->email;
@@ -29,17 +35,26 @@ class CustomerController extends Controller
     }
 
     function delete(Request $request) {
+        if (!$this->userCan('crud-customer')) {
+            abort(403);
+        }
         $customer = Customer::findOrFail($request->id);
         $customer->delete();
         return redirect()->route('customers.index');
     }
     function edit(Request $request) {
+        if (!$this->userCan('crud-customer')) {
+            abort(403);
+        }
         $customer = Customer::findOrFail($request->id);
         $cities = City::all();
         return view('customers.edit', compact('customer', 'cities'));
     }
 
     function update(Request $request) {
+        if (!$this->userCan('crud-customer')) {
+            abort(403);
+        }
         $customer = Customer::findOrFail($request->id);
         $customer->name = $request->name;
         $customer->email = $request->email;
