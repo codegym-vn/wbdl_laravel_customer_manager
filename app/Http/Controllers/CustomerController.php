@@ -34,11 +34,11 @@ class CustomerController extends Controller
         return redirect()->route('customers.index');
     }
 
-    function delete(Request $request) {
+    function delete($id) {
         if (!$this->userCan('crud-customer')) {
             abort(403);
         }
-        $customer = Customer::findOrFail($request->id);
+        $customer = Customer::findOrFail($id);
         $customer->delete();
         return redirect()->route('customers.index');
     }
